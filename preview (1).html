@@ -1,0 +1,435 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wine Salon | Ahmedabad</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+:root{
+ --cream:#f4efe7;--dark:#211b17;--brown:#654b3c;
+ --gold:#b68b59;--muted:#887b70;--white:#fffaf4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--dark);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font:inherit;cursor:pointer}
+img{width:100%;height:100%;object-fit:cover;display:block}
+nav{
+ position:fixed;top:18px;left:5%;width:90%;z-index:50;
+ display:flex;justify-content:space-between;align-items:center;
+ padding:15px 27px;background:#fffaf4d9;
+ backdrop-filter:blur(20px);border:1px solid #ffffffa0;
+ border-radius:15px;box-shadow:0 8px 35px #35271912;
+}
+.logo{font:27px 'Playfair Display',serif;letter-spacing:2px}
+.logo span{color:var(--gold)}
+.links{display:flex;gap:28px;font-size:12px}
+.links a:hover{color:var(--gold)}
+.book{
+ background:var(--dark);color:white;border:0;border-radius:30px;
+ padding:14px 23px;font-size:11px;letter-spacing:1px;
+ transition:.3s
+}
+.book:hover{background:var(--gold);transform:translateY(-3px)}
+.menu{display:none;border:0;background:none;font-size:25px}
+.hero{
+ min-height:100vh;position:relative;padding:155px 8% 80px;
+ display:flex;align-items:center;overflow:hidden;
+}
+.hero-image{
+ position:absolute;inset:0 0 0 35%;
+ background:url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1800&q=90') center/cover;
+}
+.hero-image:after{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(90deg,var(--cream),#f4efe7a8 28%,transparent 75%),
+ linear-gradient(0deg,#211b1730,transparent 45%);
+}
+.hero-content{position:relative;z-index:2;max-width:620px}
+.tag{font-size:10px;letter-spacing:4px;color:var(--gold);font-weight:600}
+h1,h2,h3{font-family:'Playfair Display',serif;font-weight:400}
+.hero h1{font-size:clamp(58px,8vw,105px);line-height:1.02;margin:25px 0}
+.hero h1 em,h2 em{color:var(--gold)}
+.hero p{max-width:400px;font-size:14px;color:var(--muted);line-height:1.9}
+.hero-buttons{display:flex;align-items:center;gap:25px;margin-top:32px}
+.outline{font-size:12px;border-bottom:1px solid var(--gold);padding-bottom:7px}
+.rating{
+ position:absolute;right:8%;bottom:12%;z-index:3;
+ background:#fffaf0d9;backdrop-filter:blur(20px);
+ padding:23px 30px;border-radius:12px;
+ box-shadow:0 10px 35px #211b1720;
+}
+.rating strong{font:36px 'Playfair Display',serif}
+.stars{color:#b68b35;letter-spacing:3px;margin:5px 0}
+.rating small{color:var(--muted)}
+section{padding:100px 8%}
+.section-head{text-align:center;margin-bottom:55px}
+.section-head h2{font-size:clamp(38px,5vw,65px);margin-top:15px}
+.section-head p{font-size:13px;color:var(--muted);line-height:1.8;max-width:480px;margin:15px auto}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-photo{height:550px;position:relative}
+.about-photo img{border-radius:3px}
+.about-label{
+ position:absolute;bottom:25px;left:-25px;
+ background:var(--white);padding:23px;
+ box-shadow:0 8px 30px #0001;font:22px 'Playfair Display',serif;
+}
+.about-copy h2{font-size:clamp(42px,5vw,62px);margin:20px 0}
+.about-copy p{color:var(--muted);font-size:14px;line-height:2;margin:20px 0}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:25px}
+.pills span{border:1px solid #d6c9ba;padding:11px 16px;border-radius:30px;font-size:11px}
+.services{background:#e9e0d5}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.service{
+ height:365px;position:relative;overflow:hidden;
+ background:#c9b9a6;border-radius:5px;
+}
+.service img{transition:1s}
+.service:hover img{transform:scale(1.09)}
+.service:after{
+ content:"";position:absolute;inset:0;
+ background:linear-gradient(0deg,#1d1714db,transparent 75%);
+}
+.service-info{position:absolute;z-index:2;bottom:25px;left:24px;color:white}
+.service-info small{color:#e8c99d;letter-spacing:3px;font-size:9px}
+.service-info h3{font-size:29px;margin:10px 0}
+.service-info p{font-size:11px;color:#e3dcd3}
+.service-info a{display:inline-block;color:#e8c99d;margin-top:14px;font-size:11px}
+.gallery{display:grid;grid-template-columns:1.3fr .8fr .8fr;grid-template-rows:230px 230px;gap:13px}
+.gallery div{overflow:hidden;position:relative}
+.gallery div:first-child{grid-row:span 2}
+.gallery img{transition:.7s}
+.gallery div:hover img{transform:scale(1.07)}
+.gallery-caption{
+ position:absolute;bottom:15px;left:15px;color:white;
+ font:20px 'Playfair Display',serif;text-shadow:0 2px 10px #000;
+}
+.banner{
+ background:var(--dark);color:var(--white);text-align:center;
+ position:relative;overflow:hidden;
+}
+.banner:before{
+ content:"";position:absolute;width:420px;height:420px;
+ border:1px solid #b68b5935;border-radius:50%;
+ top:50%;left:50%;transform:translate(-50%,-50%);
+ box-shadow:0 0 0 65px #b68b5910,0 0 0 130px #b68b5908;
+}
+.banner-content{position:relative;z-index:2}
+.banner h2{font-size:clamp(40px,6vw,70px);margin:20px}
+.banner p{color:#bdb2a6;max-width:430px;margin:15px auto 30px;font-size:13px;line-height:1.9}
+.gold-btn{background:var(--gold);color:white;padding:16px 28px;border:0;border-radius:30px;font-size:11px}
+.reviews{background:#eee6dc}
+.review-top{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.review-top h2{font-size:55px}
+.score{text-align:center}
+.score strong{font:48px 'Playfair Display',serif}
+.review-window{overflow:hidden;margin-top:45px}
+.review-track{display:flex;gap:20px;transition:.7s}
+.review{
+ flex:0 0 calc(33.333% - 14px);background:var(--white);
+ border-radius:8px;padding:28px;min-height:245px;
+ display:flex;flex-direction:column;justify-content:space-between;
+}
+.review blockquote{font:italic 19px/1.7 'Playfair Display',serif;margin:20px 0}
+.review small{font-size:10px;color:var(--muted)}
+.controls{display:flex;gap:10px;margin-top:25px}
+.controls button{width:42px;height:42px;border:1px solid #cbbba8;border-radius:50%;background:transparent}
+.controls button:hover{background:var(--dark);color:white}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.contact h2{font-size:55px;margin:18px 0}
+.detail{padding:20px 0;border-bottom:1px solid #d7cabb}
+.detail small{color:var(--gold);letter-spacing:3px;font-size:10px}
+.detail p{margin-top:10px;font-size:13px;line-height:1.8}
+.map{width:100%;height:380px;border:0;border-radius:8px}
+footer{padding:35px 8%;background:#1d1814;color:white;display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:11px;flex-wrap:wrap}
+footer p{color:#bdb2a6}
+.float-wa{
+ position:fixed;right:25px;bottom:25px;z-index:80;
+ background:#20bd69;color:white;width:58px;height:58px;
+ border-radius:50%;display:grid;place-items:center;font-size:25px;
+ box-shadow:0 8px 25px #0003;transition:.3s
+}
+.float-wa:hover{transform:scale(1.1)}
+.reveal{opacity:0;transform:translateY(35px);transition:1s}
+.reveal.show{opacity:1;transform:translateY(0)}
+.modal{display:none;position:fixed;inset:0;background:#0009;z-index:100;place-items:center;padding:20px}
+.modal.active{display:grid}
+.modal-content{background:var(--white);padding:35px;border-radius:12px;width:min(450px,100%);position:relative}
+.modal-content h2{font-size:35px;margin:15px 0}
+.modal-content p{font-size:12px;color:var(--muted);margin-bottom:20px}
+.modal-content input,.modal-content select{
+ width:100%;padding:14px;margin-bottom:12px;border:1px solid #ddd0c0;
+ background:white;border-radius:6px;font:13px 'DM Sans',sans-serif
+}
+.modal-content button[type=submit]{width:100%;margin-top:10px}
+.close{position:absolute;right:20px;top:15px;border:0;background:none;font-size:26px}
+@media(max-width:850px){
+ .links{display:none;position:absolute;top:70px;left:0;width:100%;background:var(--white);padding:25px;flex-direction:column;border-radius:12px}
+ .links.open{display:flex}
+ .menu{display:block}
+ nav>.book{display:none}
+ .hero-image{left:10%}
+ .hero-image:after{background:linear-gradient(90deg,var(--cream),#f4efe780 40%,transparent),linear-gradient(0deg,var(--cream),transparent 45%)}
+ .about,.contact{grid-template-columns:1fr;gap:40px}
+ .services-grid{grid-template-columns:repeat(2,1fr)}
+ .review{flex:0 0 calc(50% - 10px)}
+}
+@media(max-width:560px){
+ nav{left:3%;width:94%;top:10px;padding:13px 17px}
+ .hero{padding:150px 7% 190px;min-height:95vh}
+ .hero h1{font-size:61px}
+ .hero-image{left:0;opacity:.55;background-position:60%}
+ .rating{left:7%;right:auto;bottom:40px}
+ section{padding:75px 7%}
+ .about-photo{height:400px}
+ .services-grid{grid-template-columns:1fr}
+ .service{height:370px}
+ .gallery{grid-template-columns:1fr 1fr;grid-template-rows:190px 145px}
+ .gallery div:first-child{grid-row:span 2}
+ .review-top{align-items:start;flex-direction:column}
+ .review-top h2{font-size:43px}
+ .review{flex:0 0 90%}
+ .contact h2{font-size:45px}
+ footer{padding:30px 7%;flex-direction:column;align-items:start}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+ .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+ <a href="#" class="logo">WINE<span>.</span></a>
+ <div class="links" id="links">
+  <a href="#about">Our Story</a>
+  <a href="#services">Services</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#contact">Contact</a>
+ </div>
+ <button class="book" onclick="booking()">BOOK NOW ↗</button>
+ <button class="menu" onclick="document.getElementById('links').classList.toggle('open')">☰</button>
+</nav>
+
+<header class="hero">
+ <div class="hero-image"></div>
+ <div class="hero-content">
+  <div class="tag">LUXURY BEAUTY STUDIO · AHMEDABAD</div>
+  <h1>Feel beautiful.<br><em>Be yourself.</em></h1>
+  <p>Discover a place where beauty meets relaxation. Thoughtful care, professional styling and a little luxury in every visit.</p>
+  <div class="hero-buttons">
+   <button class="book" onclick="booking()">BOOK YOUR VISIT ↗</button>
+   <a class="outline" href="#services">DISCOVER MORE ↓</a>
+  </div>
+ </div>
+ <div class="rating">
+  <strong>4.9/5</strong>
+  <div class="stars">★★★★★</div>
+  <small>297 Google reviews</small>
+ </div>
+</header>
+
+<section id="about">
+ <div class="about">
+  <div class="about-photo reveal">
+   <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=1000&q=85" alt="Beautiful modern salon">
+   <div class="about-label">A moment just for you.</div>
+  </div>
+  <div class="about-copy reveal">
+   <div class="tag">THE WINE EXPERIENCE</div>
+   <h2>Beauty is more than just <em>appearance.</em></h2>
+   <p>At Wine Salon, we believe every person deserves to feel confident, comfortable and beautiful.</p>
+   <p>From professional hair care to grooming and self-care experiences, our focus is on personal attention, hygiene and quality service.</p>
+   <div class="pills">
+    <span>✦ Professional team</span>
+    <span>✦ Hygiene focused</span>
+    <span>✦ Women-owned</span>
+    <span>✦ LGBTQ+ friendly</span>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="services" id="services">
+ <div class="section-head reveal">
+  <div class="tag">WHAT WE OFFER</div>
+  <h2>Our signature <em>services.</em></h2>
+  <p>Give yourself the care and attention you deserve. Explore our salon experiences.</p>
+ </div>
+ <div class="services-grid">
+  <div class="service reveal">
+   <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&q=85" alt="Hair styling">
+   <div class="service-info"><small>01 / HAIR</small><h3>Hair Styling</h3><p>Fresh looks, beautiful finishes.</p><a href="#" onclick="booking();return false">ENQUIRE NOW ↗</a></div>
+  </div>
+  <div class="service reveal">
+   <img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=800&q=85" alt="Hair wash">
+   <div class="service-info"><small>02 / CARE</small><h3>Hair Wash</h3><p>Refresh, relax and rejuvenate.</p><a href="#" onclick="booking();return false">ENQUIRE NOW ↗</a></div>
+  </div>
+  <div class="service reveal">
+   <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=800&q=85" alt="Beard grooming">
+   <div class="service-info"><small>03 / GROOMING</small><h3>Beard Grooming</h3><p>Precision in every detail.</p><a href="#" onclick="booking();return false">ENQUIRE NOW ↗</a></div>
+  </div>
+  <div class="service reveal">
+   <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=85" alt="Nail manicure">
+   <div class="service-info"><small>04 / NAILS</small><h3>Manicure</h3><p>Beautifully cared-for hands.</p><a href="#" onclick="booking();return false">ENQUIRE NOW ↗</a></div>
+  </div>
+  <div class="service reveal">
+   <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=800&q=85" alt="Spa pedicure">
+   <div class="service-info"><small>05 / RELAX</small><h3>Spa Pedicure</h3><p>Take a moment to unwind.</p><a href="#" onclick="booking();return false">ENQUIRE NOW ↗</a></div>
+  </div>
+  <div class="service reveal">
+   <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&q=85" alt="Beauty consultation">
+   <div class="service-info"><small>06 / BEAUTY</small><h3>Personal Care</h3><p>Let's create your beauty experience.</p><a href="#" onclick="booking();return false">ENQUIRE NOW ↗</a></div>
+  </div>
+ </div>
+</section>
+
+<section id="gallery">
+ <div class="section-head reveal">
+  <div class="tag">OUR VISUAL DIARY</div>
+  <h2>A glimpse of <em>beauty.</em></h2>
+  <p>Every detail matters. Explore the world of beauty and self-care.</p>
+ </div>
+ <div class="gallery reveal">
+  <div><img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1000&q=85" alt="Salon interior"><span class="gallery-caption">The space</span></div>
+  <div><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=700&q=85" alt="Hair styling"><span class="gallery-caption">The style</span></div>
+  <div><img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&q=85" alt="Manicure"><span class="gallery-caption">The details</span></div>
+  <div><img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?w=700&q=85" alt="Pedicure"><span class="gallery-caption">The care</span></div>
+  <div><img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=700&q=85" alt="Beauty styling"><span class="gallery-caption">The beauty</span></div>
+ </div>
+</section>
+
+<section class="reviews" id="reviews">
+ <div class="review-top reveal">
+  <div><div class="tag">REAL EXPERIENCES</div><h2>Our clients<br><em>say it best.</em></h2></div>
+  <div class="score"><strong>4.9</strong><div class="stars">★★★★★</div><small>297 Google reviews</small></div>
+ </div>
+ <div class="review-window">
+  <div class="review-track" id="track">
+   <div class="review"><div><div class="stars">★★★★★</div><blockquote>"Very professional staff, hygienic setup, and top-quality haircut."</blockquote></div><small>GOOGLE REVIEW</small></div>
+   <div class="review"><div><div class="stars">★★★★★</div><blockquote>"Amazing service and very friendly staff. Everything was clean, professional, and perfectly done."</blockquote></div><small>TANVI DABHI · GOOGLE REVIEW</small></div>
+   <div class="review"><div><div class="stars">★★★★★</div><blockquote>"He was very professional, gentle, and made sure I was comfortable throughout the service."</blockquote></div><small>GOOGLE REVIEW · HAIR WASH</small></div>
+   <div class="review"><div><div class="stars">★★★★★</div><blockquote>"Great service provided by Mr. Paras. He took care of every little detail."</blockquote></div><small>CHINTAN MORABIA · GOOGLE REVIEW</small></div>
+   <div class="review"><div><div class="stars">★★★★★</div><blockquote>"Very good service on time, supportive humble staff with accurate work."</blockquote></div><small>GOOGLE REVIEW</small></div>
+  </div>
+ </div>
+ <div class="controls"><button onclick="slide(-1)">←</button><button onclick="slide(1)">→</button></div>
+</section>
+
+<section class="banner">
+ <div class="banner-content reveal">
+  <div class="tag">YOUR BEAUTY JOURNEY STARTS HERE</div>
+  <h2>Make time for <em>yourself.</em></h2>
+  <p>Because you deserve a little extra care. Connect with Wine Salon and plan your next visit.</p>
+  <button class="gold-btn" onclick="booking()">RESERVE YOUR EXPERIENCE ↗</button>
+ </div>
+</section>
+
+<section id="contact">
+ <div class="contact">
+  <div class="reveal">
+   <div class="tag">VISIT WINE SALON</div>
+   <h2>We'd love to<br><em>meet you.</em></h2>
+   <div class="detail"><small>OUR LOCATION</small><p>Ground Floor & First Floor, Blossom Oasis H, 101 & 102, L College Road, Shri Sadma Society, Navrangpura, Ahmedabad, Gujarat 380009</p></div>
+   <div class="detail"><small>CALL / WHATSAPP</small><p><a href="tel:+919586422444">+91 95864 22444</a></p></div>
+   <div class="detail"><small>BUSINESS HOURS</small><p>Listed as closing at 10 PM. Contact the salon to confirm today's hours.</p></div>
+   <br>
+   <a class="book" href="https://www.google.com/maps/search/?api=1&query=Wine+Salon+Navrangpura+Ahmedabad" target="_blank">GET DIRECTIONS ↗</a>
+  </div>
+  <iframe class="map reveal" loading="lazy" title="Wine Salon location" src="https://maps.google.com/maps?q=Wine%20Salon%20Navrangpura%20Ahmedabad&t=&z=15&output=embed"></iframe>
+ </div>
+</section>
+
+<footer>
+ <a href="#" class="logo">WINE<span>.</span></a>
+ <p>© <span id="year"></span> Wine Salon · Ahmedabad</p>
+ <p>Beauty. Confidence. You.</p>
+</footer>
+
+<a class="float-wa" href="https://wa.me/919586422444?text=Hello%20Wine%20Salon%2C%20I%20would%20like%20to%20enquire%20about%20an%20appointment." target="_blank" aria-label="WhatsApp">◉</a>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+ <div class="modal-content">
+  <button class="close" onclick="closeModal()">×</button>
+  <div class="tag">WINE SALON · AHMEDABAD</div>
+  <h2>Book your visit.</h2>
+  <p>Fill in your details to send an appointment request through WhatsApp.</p>
+  <form id="bookingForm">
+   <input id="name" placeholder="Your name" required maxlength="60">
+   <input id="phone" placeholder="Phone number" type="tel" required maxlength="15">
+   <select id="service" required>
+    <option value="">Select a service</option>
+    <option>Hair Styling / Haircut</option>
+    <option>Hair Wash & Care</option>
+    <option>Beard Grooming</option>
+    <option>Manicure</option>
+    <option>Spa Pedicure</option>
+    <option>Other / Consultation</option>
+   </select>
+   <input id="date" type="date" required>
+   <button class="gold-btn" type="submit">SEND APPOINTMENT REQUEST ↗</button>
+  </form>
+ </div>
+</div>
+
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+
+const observer=new IntersectionObserver(entries=>{
+ entries.forEach(entry=>{
+  if(entry.isIntersecting){
+   entry.target.classList.add('show');
+   observer.unobserve(entry.target);
+  }
+ });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+function booking(){
+ document.getElementById('modal').classList.add('active');
+ document.body.style.overflow='hidden';
+}
+function closeModal(){
+ document.getElementById('modal').classList.remove('active');
+ document.body.style.overflow='';
+}
+document.getElementById('date').min=new Date().toISOString().split('T')[0];
+
+document.getElementById('bookingForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ const name=document.getElementById('name').value.trim();
+ const phone=document.getElementById('phone').value.trim();
+ const service=document.getElementById('service').value;
+ const date=document.getElementById('date').value;
+ if(!name||!phone||!service||!date)return;
+ const msg=`Hello Wine Salon! I want to request an appointment.\nName: ${name}\nPhone: ${phone}\nService: ${service}\nPreferred date: ${date}\nPlease confirm available timings.`;
+ window.open('https://wa.me/919586422444?text='+encodeURIComponent(msg),'_blank');
+});
+
+let index=0;
+const track=document.getElementById('track');
+function slide(direction){
+ const count=window.innerWidth<=560?1:window.innerWidth<=850?2:3;
+ const max=Math.max(0,track.children.length-count);
+ index=(index+direction+max+1)%(max+1);
+ track.style.transform=`translateX(-${index*(track.children[0].getBoundingClientRect().width+20)}px)`;
+}
+let timer=setInterval(()=>slide(1),4500);
+track.addEventListener('mouseenter',()=>clearInterval(timer));
+track.addEventListener('mouseleave',()=>timer=setInterval(()=>slide(1),4500));
+window.addEventListener('resize',()=>{
+ index=0;
+ track.style.transform='translateX(0)';
+});
+document.querySelectorAll('.links a').forEach(a=>{
+ a.addEventListener('click',()=>document.getElementById('links').classList.remove('open'));
+});
+</script>
+</body>
+</html>
