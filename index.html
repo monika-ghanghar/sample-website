@@ -58,7 +58,7 @@ h1,h2,h3{font-family:'Playfair Display',serif;font-weight:400}
 .hero-buttons{display:flex;align-items:center;gap:25px;margin-top:32px}
 .outline{font-size:12px;border-bottom:1px solid var(--gold);padding-bottom:7px}
 .rating{
- position:absolute;right:8%;bottom:12%;z-index:3;
+ position:absolute;right:8%;bottom:11%;z-index:3;
  background:#fffaf0d9;backdrop-filter:blur(20px);
  padding:23px 30px;border-radius:12px;
  box-shadow:0 10px 35px #211b1720;
@@ -200,35 +200,6 @@ footer p{color:#bdb2a6}
  *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
  .reveal{opacity:1;transform:none}
 }
- /* Mobile rating alignment fix */
-@media screen and (max-width: 768px) {
-    .rating {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-        margin-top: 15px;
-        padding: 10px 0;
-        text-align: center;
-        position: relative;
-        transform: none;
-    }
-
-    .rating strong {
-        display: block;
-        line-height: 1.5;
-    }
-
-    .rating .stars {
-        display: block;
-        line-height: 1.3;
-    }
-
-    .rating small {
-        display: block;
-        line-height: 1.4;
-    }
 }
 </style>
 </head>
